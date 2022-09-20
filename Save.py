@@ -18,8 +18,6 @@ def save_open():
 
     return ini,fim,point,stp,dts,lab,vaz,fiber_lenght,p_status
 
-print(save_open())
-
 def save_write(line_num, text):
     lines = open('saved_preferences.txt', 'r').readlines()
     lines[line_num] = str(text) + '\n'

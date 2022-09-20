@@ -1,11 +1,11 @@
 #ini
-4
+12
 #fim
-5
+11
 #point (da fibra a ser analizado. se '0' o valor é desconsiderado)
-5.7
-#stp (do grafico em minuto)
 5
+#stp (do grafico em minuto)
+4
 #DTS
 ON
 #LV
@@ -13,6 +13,6 @@ OFF
 #VAZAO
 OFF
 # Comprimento da fibra
-30
+55
 #point status
 0

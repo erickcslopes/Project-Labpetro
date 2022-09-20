@@ -46,7 +46,7 @@ def interface ():
     textbox.grid(column=1, row=R1, padx=0, pady=30)
 
     textbox.insert(0, save_open()[7])
-    textbox.bind("<FocusIn>", temp_text_fibra)
+    #textbox.bind("<FocusIn>", temp_text_fibra)
 
     #############################################
     # Posição na fibra entry box
@@ -67,7 +67,7 @@ def interface ():
     textbox2 = Entry(root, bg="white", width=24, borderwidth=2)
     textbox2.insert(0, save_open()[2])
     textbox2.grid(column=1, row=R2, padx=0, pady=0)
-    textbox2.bind("<FocusIn>", temp_text_point)
+   #textbox2.bind("<FocusIn>", temp_text_point)
 
     #############################################
     # Bara da posição inicial

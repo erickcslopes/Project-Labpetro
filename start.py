@@ -4,7 +4,6 @@ from GerarGrafico import gerar_grafico
 from Save import *
 
 
-
 def start_dts_lv(ponto):
     print('start')
     ini = int(save_open()[0])
