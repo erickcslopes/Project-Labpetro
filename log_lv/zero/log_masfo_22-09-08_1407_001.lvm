@@ -1,0 +1,25 @@
+LabVIEW Measurement	
+Writer_Version	2
+Reader_Version	2
+Separator	Tab
+Decimal_Separator	,
+Multi_Headings	Yes
+X_Columns	Multi
+Time_Pref	Absolute
+Operator	Gabriel Gonsales
+Date	2022/09/08
+Time	14:07:20,17568242
+***End_of_Header***	
+	
+Channels	6											
+Samples	1		1		1		1		1		1	
+Date	2022/09/08		2022/09/08		2022/09/08		2022/09/08		2022/09/08		2022/09/08	
+Time	14:07:20,17568242		14:07:20,17568242		14:07:20,17568242		14:07:20,1756824700585883856		14:07:20,1756974697071444988		14:07:20,1757124693557006121	
+Y_Unit_Label	Deg C		Deg C		Deg C		kg/h		bar		mbar	
+X_Dimension	Time		Time		Time		Time		Time		Time	
+X0	0,0000000000000000E+0		0,0000000000000000E+0		0,0000000000000000E+0		0,0000000000000000E+0		0,0000000000000000E+0		0,0000000000000000E+0	
+Delta_X	0,001000		0,001000		0,001000		0,001000		0,001000		0,001000	
+***End_of_Header***												
+X_Value	Tinicio (Arith. Mean)	X_Value	Tmeio (Arith. Mean)	X_Value	Tfim (Arith. Mean)	X_Value	Vazão de  Entrada (Arith. Mean)	X_Value	P_manometrica (Arith. Mean)	X_Value	P_diferencial (Arith. Mean)	Comment
+0,000000	27,943775	0,000000	27,313199	0,000000	30,358485	0,000000	0,024939	0,000000	0,039414	0,000000	0,214726
+
