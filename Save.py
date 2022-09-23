@@ -1,7 +1,8 @@
 from LeituraDados import clean
 
 def save_open():
-    with open('saved_preferences.txt', encoding='iso-8859-1') as f:
+    path = 'saved_preferences'
+    with open(f'{path}.txt', encoding='iso-8859-1') as f:
         lines = f.readlines()
     list_lines = list(lines)
 
@@ -19,10 +20,16 @@ def save_open():
     return ini,fim,point,stp,dts,lab,vaz,fiber_lenght,p_status
 
 def save_write(line_num, text):
-    lines = open('saved_preferences.txt', 'r').readlines()
+    path = 'saved_preferences.'
+    lines = open(f'{path}.txt', 'r').readlines()
     lines[line_num] = str(text) + '\n'
-    out = open('saved_preferences.txt', 'w')
+    out = open(f'{path}.txt', 'w')
     out.writelines(lines)
     out.close()
+
+def save_log(name,data):
+    path = "log_output"
+    with open(f'{path}/log_{name}.txt', 'w') as f:
+        f.write(data)
 
 

@@ -23,7 +23,7 @@ def start_dts_lv(ponto):
     # pos = np.linspace(0, np.sum(duracoes), 10)
 
     t, T_step = gerar_eixos(duracoes, temperaturas)
-    T_cont, pres = leitura_dados_lv(t)
+    #T_cont, pres = leitura_dados_lv('log_lv/')
 
     dts = (save_open()[4])
     lab = (save_open()[5])

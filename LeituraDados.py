@@ -2,6 +2,7 @@ import re
 import numpy as np
 from os import listdir
 from os.path import isfile, join
+import Save
 
 def to_second(form):
     h, m, s = map(int, form.split(':'))
@@ -25,7 +26,7 @@ def clean_listas(origin, LM, LT):
         LT.append(float(c[1]))
 
 def leitura_dados_dts(ini,fim,point,stp):
-    mypath = 'logs/'
+    mypath = 'logs_dts/'
 
     a = [f for f in listdir(mypath) if isfile(join(mypath, f))]
     b = []
@@ -101,6 +102,8 @@ def leitura_dados_dts(ini,fim,point,stp):
                     lista_sec_Tempe.append(clean_Tempe[y])
             temperaturas.append(np.mean(lista_sec_Tempe))
 
+            Save.save_log(f'{Save.save_open()[2]}',f'{temperaturas}')
+
     if stp == 0:
         return duration_list, temperaturas
     else:
@@ -109,25 +112,24 @@ def leitura_dados_dts(ini,fim,point,stp):
             duration_stp.append(stp * 60)
         return duration_stp, temperaturas
 
-def leitura_dados_lv(t: np.ndarray):
-    # T_cont = 30 - 10 * np.sin(2 * np.pi * t / 500)
-    # pres = np.cos(2 * np.pi * t / 871) + 4.5
+def leitura_dados_lv(path):
 
-    T_cont = []
-    pres = []
-
-    mypath = 'log_lv/'
-
-    tempo = []
-    Tambiente = []
-    Tfibra = []
+    def comma_to_dot(term):
+        x = re.sub(",", ".", term)
+        y = re.findall(r'\d+\.\d+', x)
+        return round(float(y[0]), 2)
 
     ##################################################
-    a = [f for f in listdir(mypath) if isfile(join(mypath, f))]
+    ambiente = [] # T meio
+    fibra = [] # T inicio
+    T_fim = []
+    tempo = []
+    ##################################################
+    a = [f for f in listdir(path) if isfile(join(path, f))]
     b = []
 
     for item in a:
-        if ".lvm" in item:
+        if ".txt" in item:
             b.append(item)
 
     ##################################################
@@ -138,44 +140,29 @@ def leitura_dados_lv(t: np.ndarray):
     for log in logs:
         # -----------------------------------
         # Abertura do log
-        with open(mypath + log, encoding='iso-8859-1') as f:
+        with open(path + log, encoding='iso-8859-1') as f:
             lines = f.readlines()
 
         # -----------------------------------
         # Pescar linha especifica
         list_lines = list(lines)
 
-        all = (list_lines[23])
-        time = (list_lines[23])[:-103]
-        Tinicio = (list_lines[23])[9:-93]
-        Tmeio = (list_lines[23])[28:-74]
+        del list_lines[0:23]
 
-        tempo.append(((clean_comma(time))))
-        Tambiente.append(clean_comma(Tmeio))
-        Tfibra.append(clean_comma(Tinicio))
+        for masure in list_lines:
+            line = masure.split('\n')
+            data = line[0].split('\t')
+            tempo.append(comma_to_dot(data[0]))
+            fibra.append(comma_to_dot(data[1]))
+            ambiente.append(comma_to_dot(data[3]))
+            T_fim.append(comma_to_dot(data[5]))
 
-    R = 5
-    len_total = len(tempo)
-    w = R * (int(len_total / R))
+    # print(len(ambiente),ambiente)
+    # print(len(fibra),fibra)
+    # print(len(tempo),tempo)
 
-    while len_total > w:
-        fivem = []
-        for t in range(R):
-            print(tempo[t])
-            fivem.append(tempo[t])
-        soma_five = sum(fivem)
+    return ambiente, fibra, T_fim, len(tempo)
 
-        five_ta = []
-        for ta in range(R):
-            five_ta.append(Tambiente[ta])
-        media_ta = np.mean(five_ta)
-        T_cont.append(media_ta)
 
-        five_tf = []
-        for tf in range(R):
-            five_tf.append(Tfibra[tf])
-        media_tf = np.mean(five_tf)
-        pres.append(media_tf)
 
-        len_total = len_total - R
-    return T_cont, pres
+
