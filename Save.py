@@ -1,4 +1,4 @@
-from LeituraDados import clean
+from funcoes import clean
 
 def save_open():
     path = 'saved_preferences'
@@ -20,7 +20,7 @@ def save_open():
     return ini,fim,point,stp,dts,lab,vaz,fiber_lenght,p_status
 
 def save_write(line_num, text):
-    path = 'saved_preferences.'
+    path = 'saved_preferences'
     lines = open(f'{path}.txt', 'r').readlines()
     lines[line_num] = str(text) + '\n'
     out = open(f'{path}.txt', 'w')

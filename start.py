@@ -28,5 +28,8 @@ def start_dts_lv(ponto):
     dts = (save_open()[4])
     lab = (save_open()[5])
     vaz = (save_open()[6])
+    T_cont = 0
+    pres = 0
+    #gerar_grafico(t, T_step, T_cont, pres, pos, dts, lab, vaz)
     gerar_grafico(t, T_step, T_cont, pres, pos, dts, lab, vaz)
 
