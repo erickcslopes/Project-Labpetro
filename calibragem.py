@@ -3,7 +3,7 @@ import numpy as np
 
 def offset_PT100():
 
-    log = leitura_dados_lv("log_calibragem/")
+    log = leitura_dados_lv("log_lv/calibragem/")
 
     Tini = log[0]
     Tmeio = log[1]
