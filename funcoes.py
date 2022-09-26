@@ -1,7 +1,4 @@
 import re
-from os import listdir
-from os.path import isfile, join
-
 
 def to_second(form):
     h, m, s = map(int, form.split(':'))
@@ -14,6 +11,11 @@ def clean_comma(term):
     a = re.sub(",", ".", term)
     b = float(a)
     return b
+
+def comma_to_dot(term):
+    x = re.sub(",", ".", term)
+    y = re.findall(r'\d+\.\d+', x)
+    return round(float(y[0]), 2)
 
 def clean_listas(origin, LM, LT):
     for x in origin:

@@ -1,8 +1,7 @@
-import re
 import numpy as np
+from funcoes import *
 from os import listdir
 from os.path import isfile, join
-from funcoes import *
 import Save
 
 def leitura_dados_dts(ini,fim,point,stp):
@@ -92,20 +91,14 @@ def leitura_dados_dts(ini,fim,point,stp):
             duration_stp.append(stp * 60)
         return duration_stp, temperaturas
 
-def leitura_dados_lv(path):
+def leitura_dados_lv(path_lv):
 
-    def comma_to_dot(term):
-        x = re.sub(",", ".", term)
-        y = re.findall(r'\d+\.\d+', x)
-        return round(float(y[0]), 2)
-
-    ##################################################
     ambiente = [] # T meio
     fibra = [] # T inicio
     T_fim = []
     tempo = []
     ##################################################
-    a = [f for f in listdir(path) if isfile(join(path, f))]
+    a = [f for f in listdir(path_lv) if isfile(join(path_lv, f))]
     b = []
 
     for item in a:
@@ -120,7 +113,7 @@ def leitura_dados_lv(path):
     for log in logs:
         # -----------------------------------
         # Abertura do log
-        with open(path + log, encoding='iso-8859-1') as f:
+        with open(path_lv + log, encoding='iso-8859-1') as f:
             lines = f.readlines()
 
         # -----------------------------------
@@ -136,10 +129,6 @@ def leitura_dados_lv(path):
             fibra.append(comma_to_dot(data[1]))
             ambiente.append(comma_to_dot(data[3]))
             T_fim.append(comma_to_dot(data[5]))
-
-    # print(len(ambiente),ambiente)
-    # print(len(fibra),fibra)
-    # print(len(tempo),tempo)
 
     return ambiente, fibra, T_fim, len(tempo)
 
