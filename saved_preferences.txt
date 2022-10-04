@@ -9,10 +9,10 @@
 #DTS
 ON
 #LV
-OFF
+ON
 #VAZAO
 OFF
 # Comprimento da fibra
-50
+30
 #point status
 0

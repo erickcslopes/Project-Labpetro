@@ -1,5 +1,5 @@
 from LeituraDados import *
-
+from calibragem import *
 from Painel import *
 from GerarEixos import gerar_eixos
 from GerarGrafico import gerar_grafico
@@ -23,15 +23,19 @@ def start_dts_graphc(ponto):
     # pos = np.linspace(0, np.sum(duracoes), 10)
 
     t, T_step = gerar_eixos(duracoes, temperaturas)
-    T_cont, pres = leitura_dummie(t)
-    print('aaaaaa', len(T_cont),len(pres), len(t))
-    print(len(leitura_dados_lv("log_lv/")[1]))
+    #T_cont, pres = leitura_dummie(t)
+    #print('aaaaaa', len(T_cont),len(pres), len(t))
+
+    print(len(leitura_dados_lv("log_lv/")[1]), len(t))
+    x = divider(leitura_dados_lv("log_lv/")[1],len(t))
+    T_cont = x
+
 
     dts = (save_open()[4])
     lab = (save_open()[5])
     vaz = (save_open()[6])
     # T_cont = 1
-    # pres = 1
+    pres = 1
     gerar_grafico(t, T_step, T_cont, pres, pos, dts, lab, vaz)
 
 from calibragem import *

@@ -1,6 +1,4 @@
-import numpy as np
 from funcoes import *
-from calibragem import *
 from os import listdir
 from start import *
 from os.path import isfile, join
