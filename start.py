@@ -1,5 +1,5 @@
 from LeituraDados import *
-from calibragem import *
+
 from Painel import *
 from GerarEixos import gerar_eixos
 from GerarGrafico import gerar_grafico
@@ -23,17 +23,20 @@ def start_dts_graphc(ponto):
     # pos = np.linspace(0, np.sum(duracoes), 10)
 
     t, T_step = gerar_eixos(duracoes, temperaturas)
-    # T_cont, pres = leitura_dados_lv('log_lv/')
+    T_cont, pres = leitura_dummie(t)
+    print('aaaaaa', len(T_cont),len(pres), len(t))
+    print(len(leitura_dados_lv("log_lv/")[1]))
 
     dts = (save_open()[4])
     lab = (save_open()[5])
     vaz = (save_open()[6])
-    T_cont = 0
-    pres = 0
-    # gerar_grafico(t, T_step, T_cont, pres, pos, dts, lab, vaz)
+    # T_cont = 1
+    # pres = 1
     gerar_grafico(t, T_step, T_cont, pres, pos, dts, lab, vaz)
 
+from calibragem import *
 def start_log_tabela(log_lv,log_lv_amb):
+
     ambiente_medicao = calibragem(leitura_dados_lv(log_lv)[0], leitura_dados_lv(log_lv)[1])[0]
     fibra_medicao = calibragem(leitura_dados_lv(log_lv)[0], leitura_dados_lv(log_lv)[1])[1]
 
@@ -49,6 +52,8 @@ def start_log_tabela(log_lv,log_lv_amb):
 
     print('ambiente', divider(ambiente, 19))
     print('fibra', divider(fibra, 19))
+
+    return ambiente, fibra
 
 def start_dts_lv(ponto):
 

@@ -42,3 +42,12 @@ def calibragem (ambiente, fibra):
         fibra[item] = round((fibra[item] + offset_fib), 2)
 
     return ambiente, fibra
+
+
+# def leitura_dados_lv(t: np.ndarray):
+#     T_cont = 30 - 10 * np.sin(2 * np.pi * t / 500)
+#     pres = np.cos(2 * np.pi * t / 871) + 4.5
+#
+#     return T_cont, pres
+# t=300
+# print(leitura_dados_lv(t))

@@ -1,6 +1,8 @@
 import numpy as np
 from funcoes import *
+from calibragem import *
 from os import listdir
+from start import *
 from os.path import isfile, join
 import Save
 
@@ -132,6 +134,19 @@ def leitura_dados_lv(path_lv):
 
     return ambiente, fibra, T_fim, len(tempo)
 
+def dados_lv_temp(t):
+    #L_t = len(t)
+    L_t = t
+    dado = start_log_tabela("log_lv/","log_lv/ambiente/")[1]
+    return divider(dado,L_t)
+
+def leitura_dummie(t: np.ndarray):
+    T_cont = 30 - 10 * np.sin(2 * np.pi * t / 500)
+    pres = np.cos(2 * np.pi * t / 871) + 4.5
+
+    return T_cont, pres
 
 
-
+# print(leitura_dados_lv("log_lv/")[1])
+# t = 5771
+# print(dados_lv_temp(t))

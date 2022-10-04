@@ -257,8 +257,9 @@ def interface ():
         save.grid(column=0, row=R, padx=0, pady=20)
 
     #############################################
+    from start import start_dts_lv
     def Start_button(R):
-        pref_save = Button(root, text='  START ', command=lambda:start_dts_graphc(float(ponto[0])))
+        pref_save = Button(root, text='  START ', command=lambda:start_dts_lv(float(ponto[0])))
         pref_save.grid(column=1, row=R, padx=0, pady=20)
 
     #################################################################

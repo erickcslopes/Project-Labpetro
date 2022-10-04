@@ -11,7 +11,7 @@ def gerar_grafico(t, T_step, T_cont, pres, pos,dts, lab, vaz):
     if dts == 'ON\n':
         ax1.plot(t, T_step, color='b', label='T - DTS')
     if lab == 'ON\n':
-        ax1.plot(t, T_cont, color='r', label='T - LabView')
+        ax1.plot(t, T_cont, color='r', label='T - Temperatura PT100')
     if vaz == 'ON\n':
         ax2.plot(t, pres, color='g', label='Vazão')
 
